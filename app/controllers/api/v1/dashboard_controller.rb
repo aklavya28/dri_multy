@@ -311,8 +311,13 @@ class Api::V1::DashboardController < ApplicationController
   end
   # Api::V1::DashboardController.get_all_products
   def get_all_products_dashboard
-   products =  SoldProduct.joins("LEFT JOIN products p ON p.id = sold_products.product_id")
-   .select("p.name, p.id, p.part_no")
+  #  products =  SoldProduct
+  #  .joins("LEFT JOIN products p ON p.id = sold_products.product_id")
+  #     .select("p.name, p.id, p.part_no")
+      products = SoldProduct.joins("LEFT JOIN products p ON p.id = sold_products.product_id")
+      .where.not("p.name = ?","IS NULL")
+      .select("p.name, p.id, p.part_no")
+
    render json:{
           status: "Bind Successfully",
           data: products

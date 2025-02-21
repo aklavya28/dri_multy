@@ -73,8 +73,6 @@ module Accounting::Entry
       # puts "************ mera pahala plutus code ********************"
     end
 
-
-
   end
 
   # Accounting::Entry.process_reverse_expense_entry
